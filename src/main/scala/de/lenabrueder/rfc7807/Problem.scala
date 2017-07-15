@@ -39,7 +39,7 @@ trait EasyProblematic extends Problematic {
     Problem(`type` = urlConfiguration.url(errorCode), title = message getOrElse "unknown")
 }
 object Problematic {
-  def fromException(ex: Exception)(implicit urlConfiguration: UrlConfiguration) = new Problematic {
+  def fromException(ex: Throwable)(implicit urlConfiguration: UrlConfiguration) = new Problematic {
     override def asProblem: Problem = {
       ex match {
         case p: Problematic => p.asProblem

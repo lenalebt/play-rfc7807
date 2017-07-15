@@ -10,7 +10,8 @@ object PlayIntegration {
       result(Json.toJson(problem.copy(status = problem.status orElse Some(result.header.status))))
         .as("application/problem+json")
 
-    def withProblem(ex: Exception): Result = withProblem(Problematic.fromException(ex))
+    def withProblem(ex: Throwable): Result =
+      withProblem(Problematic.fromException(ex))
     def withProblem(problematic: Problematic): Result =
       withProblem(problematic.asProblem)
     def withProblem(problem: String)(implicit urlConfiguration: UrlConfiguration): Result =
