@@ -18,12 +18,16 @@ object Problem {
   sealed trait UrlConfiguration {
     def url(code: String): String
   }
-  implicit case object DefaultUrlConfiguration extends UrlConfiguration {
+  case object DefaultUrlConfiguration extends UrlConfiguration {
     override def url(code: String): String = s"https://httpstatuses.com/$code"
   }
   case class CustomUrlConfiguration(customUrl: String) extends UrlConfiguration {
     def url(code: String) = customUrl.format(code)
   }
+}
+
+trait LowPriorityProblemImplicits {
+  implicit val defaultUrlConfiguration = Problem.DefaultUrlConfiguration
 }
 
 /**use this to extend your exceptions to be able to directly convert them to a problem instance*/
