@@ -10,7 +10,8 @@ add the dependency
 libraryDependencies += "de.lenabrueder" %% "play-rfc7807" % "0.1.0-SNAPSHOT"
 ```
 
-to your `build.sbt`. If you want to use the error handler as well, add
+to your `build.sbt`. Versioning follows play version in major and minor versions.
+If you want to use the error handler as well, add
 
 ```
 play.http.errorHandler = "de.lenabrueder.rfc7807.ProblemErrorHandler"
