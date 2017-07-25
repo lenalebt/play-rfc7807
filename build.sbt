@@ -2,6 +2,8 @@
 organization := "de.lenabrueder"
 scalaVersion := "2.12.2"
 
+crossScalaVersions := Seq(scalaVersion.value, "2.11.8")
+
 name := "play-rfc7807"
 
 //Dependencies

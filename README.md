@@ -7,10 +7,10 @@ This plugin adds easy support for [RFC7807](https://tools.ietf.org/html/rfc7807)
 add the dependency
 
 ```scala
-libraryDependencies += "de.lenabrueder" %% "play-rfc7807" % "0.1.0-SNAPSHOT"
+libraryDependencies += "de.lenabrueder" %% "play-rfc7807" % "2.6.0-SNAPSHOT"
 ```
 
-to your `build.sbt`. Versioning follows play version in major and minor versions.
+to your `build.sbt`. Versioning follows play version in major and minor versions, patch version is up to the library.
 If you want to use the error handler as well, add
 
 ```
