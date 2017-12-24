@@ -1,21 +1,22 @@
 
 organization := "de.lenabrueder"
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
 
-crossScalaVersions := Seq(scalaVersion.value, "2.11.11")
+crossScalaVersions := Seq(scalaVersion.value, "2.11.12")
 
 name := "play-rfc7807"
 
 //Dependencies
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play" % "2.6.3" % "provided",
-  "com.typesafe.play" %% "play-json" % "2.6.3" % "provided",
+  "com.typesafe.play" %% "play" % "2.6.10" % "provided",
+  "com.typesafe.play" %% "play-json" % "2.6.8" % "provided",
   "com.google.inject" % "guice" % "4.1.0" % "provided"
 )
 
 //Test dependencies
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.1"
+  "org.scalatest" %% "scalatest" % "3.0.4",
+  "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2"
 ) map (_ % "test")
 
 scmInfo := Some(

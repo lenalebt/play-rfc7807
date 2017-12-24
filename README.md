@@ -7,7 +7,7 @@ This plugin adds easy support for [RFC7807](https://tools.ietf.org/html/rfc7807)
 add the dependency
 
 ```scala
-libraryDependencies += "de.lenabrueder" %% "play-rfc7807" % "2.6.0-SNAPSHOT"
+libraryDependencies += "de.lenabrueder" %% "play-rfc7807" % "2.6.0"
 ```
 
 to your `build.sbt`. Versioning follows play version in major and minor versions, patch version is up to the library.
@@ -28,3 +28,17 @@ NotFound.asProblem
 Forbidden.withProblem(new RuntimeException("something went wrong"))
 Unauthorized.withProblem(Problem("https://httpstatuses.com/401", "no authorization"))
 ```
+
+Result will be something like
+
+```json
+{
+  "type": "https://httpstatuses.com/404",
+  "title": "Cannot find requested object",
+  "status": 404
+}
+```
+
+You can configure URL generation by changing the import `import de.lenabrueder.rfc7807.PlayIntegration._` to
+`import de.lenabrueder.rfc7807.PlayIntegration.ResultAsProblem` and providing an instance
+of `UrlConfiguration` implicitly when calling the `withProblem` or `asProblem` functions.
