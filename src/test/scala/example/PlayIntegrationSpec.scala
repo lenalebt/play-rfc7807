@@ -2,7 +2,8 @@ package example
 
 import de.lenabrueder.rfc7807.UrlConfiguration
 import de.lenabrueder.rfc7807.UrlConfiguration.CustomUrlConfiguration
-import play.api.mvc.{Result, Results}
+import play.api.mvc.Result
+import play.api.mvc.Results
 import spec.UnitSpec
 import play.api.test._
 import play.api.test.Helpers._
@@ -16,7 +17,10 @@ class PlayIntegrationSpec extends UnitSpec {
     val p = Results.NotFound.asProblem
 
     assert(p.header.status == Results.NotFound.header.status)
-    assert((contentAsJson(Future.successful(p)) \ "type").as[String].startsWith("https://httpstatuses.com"))
+    assert(
+      (contentAsJson(Future.successful(p)) \ "type")
+        .as[String]
+        .startsWith("https://httpstatuses.com"))
     assert(p.body.contentType.contains("application/problem+json"))
   }
 
@@ -27,7 +31,10 @@ class PlayIntegrationSpec extends UnitSpec {
     val p                                 = Results.NotFound.asProblem
 
     assert(p.header.status == Results.NotFound.header.status)
-    assert((contentAsJson(Future.successful(p)) \ "type").as[String].startsWith("https://httpstatusdogs.com"))
+    assert(
+      (contentAsJson(Future.successful(p)) \ "type")
+        .as[String]
+        .startsWith("https://httpstatusdogs.com"))
     assert(p.body.contentType.contains("application/problem+json"))
   }
 

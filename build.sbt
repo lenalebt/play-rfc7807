@@ -8,15 +8,15 @@ name := "play-rfc7807"
 
 //Dependencies
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play" % "2.6.10" % "provided",
-  "com.typesafe.play" %% "play-json" % "2.6.8" % "provided",
-  "com.google.inject" % "guice" % "4.1.0" % "provided"
+  "com.typesafe.play" %% "play" % "2.7.0" % "provided",
+  "com.typesafe.play" %% "play-json" % "2.7.0" % "provided",
+  "com.google.inject" % "guice" % "4.2.2" % "provided"
 )
 
 //Test dependencies
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.5",
-  "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2"
+  "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.0"
 ) map (_ % "test")
 
 scmInfo := Some(
