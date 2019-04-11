@@ -11,12 +11,14 @@ object PlayIntegration {
     * Will overwrite the body of the result. Allows to write e.g. {{{Results.NotFound.asProblem}}} and get a nice
     * `application/problem+json` response.*/
   implicit class ResultAsProblem[T <: Result](val result: T) {
-    def withProblem(problem: Problem)(implicit writeable: Writeable[JsValue],
-                                      urlConfiguration: UrlConfiguration): Result =
+    def withProblem(
+        problem: Problem
+    )(implicit writeable: Writeable[JsValue], urlConfiguration: UrlConfiguration): Result =
       Result(
         result.header,
         writeable.toEntity(
-          Json.toJson(problem.copy(status = problem.status.orElse(Some(result.header.status)))))
+          Json.toJson(problem.copy(status = problem.status.orElse(Some(result.header.status))))
+        )
       ).as(urlConfiguration.problemJsonType)
 
     def withProblem(ex: Throwable)(implicit urlConfiguration: UrlConfiguration): Result =
