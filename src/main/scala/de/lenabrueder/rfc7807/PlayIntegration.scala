@@ -1,7 +1,8 @@
 package de.lenabrueder.rfc7807
 
 import play.api.http.Writeable
-import play.api.libs.json.{JsValue, Json}
+import play.api.libs.json.JsValue
+import play.api.libs.json.Json
 import play.api.mvc.Result
 
 object PlayIntegration {
@@ -14,7 +15,8 @@ object PlayIntegration {
                                       urlConfiguration: UrlConfiguration): Result =
       Result(
         result.header,
-        writeable.toEntity(Json.toJson(problem.copy(status = problem.status orElse Some(result.header.status))))
+        writeable.toEntity(
+          Json.toJson(problem.copy(status = problem.status.orElse(Some(result.header.status)))))
       ).as(urlConfiguration.problemJsonType)
 
     def withProblem(ex: Throwable)(implicit urlConfiguration: UrlConfiguration): Result =
@@ -24,6 +26,6 @@ object PlayIntegration {
     def withProblem(problem: String)(implicit urlConfiguration: UrlConfiguration): Result =
       withProblem(Problem(urlConfiguration.url(result.header.status.toString), problem))
     def asProblem(implicit urlConfiguration: UrlConfiguration): Result =
-      withProblem(result.header.reasonPhrase getOrElse "unknown")
+      withProblem(result.header.reasonPhrase.getOrElse("unknown"))
   }
 }

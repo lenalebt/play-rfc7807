@@ -2,7 +2,8 @@ package de.lenabrueder.rfc7807
 
 import play.api.http.Status
 import play.api.libs.json.JsonNaming.SnakeCase
-import play.api.libs.json.{Json, JsonConfiguration}
+import play.api.libs.json.Json
+import play.api.libs.json.JsonConfiguration
 
 /**See https://tools.ietf.org/html/rfc7807#page-3 for more information about this type*/
 case class Problem(
@@ -60,7 +61,7 @@ trait EasyProblematic extends Problematic {
   def urlConfiguration: UrlConfiguration
 
   override def asProblem: Problem =
-    Problem(`type` = urlConfiguration.url(errorCode), title = message getOrElse "unknown")
+    Problem(`type` = urlConfiguration.url(errorCode), title = message.getOrElse("unknown"))
 }
 object Problematic {
   def fromException(ex: Throwable)(implicit urlConfiguration: UrlConfiguration) = new Problematic {

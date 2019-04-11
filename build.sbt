@@ -1,6 +1,6 @@
 
 organization := "de.lenabrueder"
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.8"
 
 crossScalaVersions := Seq(scalaVersion.value, "2.11.12")
 
@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
 
 //Test dependencies
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.4",
+  "org.scalatest" %% "scalatest" % "3.0.5",
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2"
 ) map (_ % "test")
 
@@ -50,7 +50,5 @@ publishTo := {
 publishArtifact in Test := false
 
 licenses += ("MIT", url("https://opensource.org/licenses/MIT"))
-
-scapegoatVersion := "1.3.1"
 
 useGpg := true
